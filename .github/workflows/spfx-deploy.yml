@@ -30,10 +30,10 @@ jobs:
 
       # CLI for Microsoft 365 login action
       - name: Login to tenant
-        uses: pnp/action-cli-login@main
+        uses: pnp/action-cli-login@v1
         with:
-          ADMIN_USERNAME: "jatinbatra_nagarro@ysgcg.onmicrosoft.com"
-          ADMIN_PASSWORD: "SharePoint@123"
+          ADMIN_USERNAME: ${{ secrets.ADMIN_USERNAME }}
+          ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
 
       # CLI for Microsoft 365 deploy app action
       # Use either option 1 or option 2
@@ -41,7 +41,7 @@ jobs:
       # Option 1 - Deploy app at tenant level
       - name: Option 1 - Deploy app to tenant
         id: climicrosoft365deploy # optional - use if output needs to be used
-        uses: pnp/action-cli-deploy@main
+        uses: pnp/action-cli-deploy@v4
         with:
           APP_FILE_PATH: sharepoint/solution/spfx-demo-app.sppkg
           SKIP_FEATURE_DEPLOYMENT: true
