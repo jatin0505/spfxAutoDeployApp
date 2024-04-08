@@ -43,7 +43,7 @@ jobs:
         id: climicrosoft365deploy # optional - use if output needs to be used
         uses: pnp/action-cli-deploy@main
         with:
-          APP_FILE_PATH: sharepoint/solution/spfx-cli-microsoft365-action.sppkg
+          APP_FILE_PATH: sharepoint/solution/spfx-demo-app.sppkg
           SKIP_FEATURE_DEPLOYMENT: true
           OVERWRITE: true
       # Option 1 - ends
