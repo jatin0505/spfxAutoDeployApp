@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "spfx-demo-app-client-side-solution",
+    "id": "883202eb-519b-4d42-b2fc-f32f4a590deb",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.18.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "spfxDemoAPP description"
+      },
+      "longDescription": {
+        "default": "spfxDemoAPP description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "spfx-demo-app Feature",
+        "description": "The feature that activates elements of the spfx-demo-app solution.",
+        "id": "705c82d0-b1c2-48d9-930b-639fe5fbb1d1",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/spfx-demo-app.sppkg"
+  }
+}
