@@ -32,8 +32,8 @@ jobs:
       - name: Login to tenant
         uses: pnp/action-cli-login@v2.2.1
         with:
-          APP_ID: ${{ secrets.APP_ID }}
-          TENANT: ${{ secrets.TENANT }}
+          ADMIN_USERNAME: ${{ secrets.ADMIN_USERNAME}}
+          ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
 
       # CLI for Microsoft 365 deploy app action
       # Use either option 1 or option 2
