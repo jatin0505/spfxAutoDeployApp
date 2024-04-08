@@ -36,7 +36,6 @@ jobs:
           ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
 
       # CLI for Microsoft 365 deploy app action
-      # Use either option 1 or option 2
 
       # Option 1 - Deploy app at tenant level
       - name: Option 1 - Deploy app to tenant
