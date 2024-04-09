@@ -46,8 +46,6 @@ jobs:
           APP_FILE_PATH: sharepoint/solution/spfx-demo-app.sppkg
           SKIP_FEATURE_DEPLOYMENT: true
           OVERWRITE: true
-          SCOPE: sitecollection
-          SITE_COLLECTION_URL: https://ysgcg.sharepoint.com/
       # Option 1 - ends
       # Print the id of the app
       - name: Get the id of the app deployed
