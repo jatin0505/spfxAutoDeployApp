@@ -35,13 +35,13 @@ jobs:
       
       # Print the id of the app
       - name: Get the id of the app deployed
-        run: echo "The site domain is ${{ env.SP_ENVIRONMENT.SHAREPOINTSITE }} and client id is ${{env.SP_ENVIRONMENT.secrets.APPCLIENTID}} and client secret is ${{env.SP_ENVIRONMENT.secrets.APPSECRET}}"
+        run: echo "The site domain is ${{secrets.TENANT}} and client id is ${{secrets.APPCLIENTID}} and client secret is ${{secrets.APPSECRET}}"
         
       - name: Publish to development APP catalog
         shell: pwsh
         run: |
-          Connect-PnPOnline -Url "https://${{env.SP_ENVIRONMENT.SHAREPOINTSITE}}.sharepoint.com" -ClientId '${{env.SP_ENVIRONMENT.secrets.APPCLIENTID}}' -ClientSecret '${{env.SP_ENVIRONMENT.secrets.APPSECRET}}' 
+          Connect-PnPOnline -Url "https://${{secrets.TENANT}}.sharepoint.com" -ClientId '${{secrets.APPCLIENTID}}' -ClientSecret '${{secrets.APPSECRET}}' 
           $catalogURL=Get-PnPTenantAppCatalogUrl
-          Connect-PnPOnline -Url $catalogURL -ClientId '${{env.SP_ENVIRONMENT.secrets.APPCLIENTID}}' -ClientSecret '${{env.SP_ENVIRONMENT.secrets.APPSECRET}}'
+          Connect-PnPOnline -Url $catalogURL -ClientId '${{secrets.APPCLIENTID}}' -ClientSecret '${{secrets.APPSECRET}}'
           Add-PnPApp -Path ./sharepoint/solution/spfx-demo-app.sppkg -Publish -Overwrite
           Disconnect-PnPOnline
