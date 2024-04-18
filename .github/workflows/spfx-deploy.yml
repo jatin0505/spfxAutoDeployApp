@@ -28,25 +28,16 @@ jobs:
       - name: Package solution
         run: gulp package-solution --ship
 
-      # CLI for Microsoft 365 login action
-      - name: Login to tenant
-        uses: pnp/action-cli-login@v2.2.1
-        with:
-          ADMIN_USERNAME: ${{ secrets.ADMIN_USERNAME}}
-          ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
+      - name: Install PNP
+        shell: pwsh
+        run: |
+          Install-Module -Name PnP.PowerShell -AllowPrerelease -SkipPublisherCheck -AllowClobber -Scope CurrentUser -Force -AcceptLicense
 
-      # CLI for Microsoft 365 deploy app action
-      # Use either option 1 or option 2
-
-      # Option 1 - Deploy app at tenant level
-      - name: Option 1 - Deploy app to tenant
-        id: climicrosoft365deploy # optional - use if output needs to be used
-        uses: pnp/action-cli-deploy@v4
-        with:
-          APP_FILE_PATH: sharepoint/solution/spfx-demo-app.sppkg
-          SKIP_FEATURE_DEPLOYMENT: true
-          OVERWRITE: true
-      # Option 1 - ends
-      # Print the id of the app
-      - name: Get the id of the app deployed
-        run: echo "The id of the app deployed is ${{ steps.climicrosoft365deploy.outputs.APP_ID }}"
+      - name: Publish to development APP catalog
+        shell: pwsh
+        run: |
+          Connect-PnPOnline -Url "https://${{env.SP_ENVIRONMENT.SHAREPOINTSITE}}.sharepoint.com" -ClientId '${{env.SP_ENVIRONMENT.secrets.APPCLIENTID}}' -ClientSecret '${{env.SP_ENVIRONMENT.secrets.APPSECRET}}' 
+          $catalogURL=Get-PnPTenantAppCatalogUrl
+          Connect-PnPOnline -Url $catalogURL -ClientId '${{env.SP_ENVIRONMENT.secrets.APPCLIENTID}}' -ClientSecret '${{env.SP_ENVIRONMENT.secrets.APPSECRET}}
+          Add-PnPApp -Path ./sharepoint/solution/spfx-demo-app.sppkg -Publish -Overwrite
+          Disconnect-PnPOnline
