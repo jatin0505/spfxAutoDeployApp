@@ -3,7 +3,7 @@
   "solution": {
     "name": "spfx-demo-app-client-side-solution",
     "id": "883202eb-519b-4d42-b2fc-f32f4a590deb",
-    "version": "1.0.0.1",
+    "version": "1.0.0.2",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
