@@ -45,7 +45,7 @@ jobs:
           Connect-PnPOnline -Url $catalogURL -ClientId '${{secrets.APPCLIENTID}}' -ClientSecret '${{secrets.APPSECRET}}'
           Add-PnPApp -Path ./sharepoint/solution/spfx-demo-app.sppkg -Publish -Overwrite
 
-          $packageName = 'fis-people-picker-client-side-solution'
+          $packageName = 'spfx-demo-app-client-side-solution'
           
           #Get All Communication Sites
           Get-PnPTenantSite -Template "SITEPAGEPUBLISHING#0" | ForEach-Object {
